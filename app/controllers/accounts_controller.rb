@@ -35,6 +35,7 @@ class AccountsController < ApplicationController
         @day_total_cc += account.cc || 0
       end
       @day_total = @day_total_price + @day_total_misc
+      @day_accounts.sort_by(&:created_at)
       render :day
     end
 
@@ -57,13 +58,16 @@ class AccountsController < ApplicationController
         @night_total_cc += account.cc || 0
       end
       @night_total = @night_total_price + @night_total_misc
+      @night_accounts.sort_by(&:created_at)
       render :night
     end
 
   	if(@search_from && @search_to)
   		@accounts = Account.where(:account_date => @search_from.to_time..@search_to.to_time)
       @day_accounts = @accounts.where(:day => true)
+      @day_accounts.sort_by(&:created_at)
       @night_accounts = @accounts.where(:night => true)
+      @night_accounts.sort_by(&:created_at)
   		@accounts.each do |account|
         if account.day
           @day_total_price += account.price
