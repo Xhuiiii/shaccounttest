@@ -149,7 +149,9 @@ class AccountsController < ApplicationController
 
   def update 
     @account = Account.find(params[:id])
+    @housekeeping = Staff.find_by(:room_number => @account.room_no)
   	if @account.update(account_params)
+      @housekeeping.update(:room_number => account_params[:room_no])
   		redirect_to @account, notice: "Account was successfully updated."
   	else
   		render :edit
