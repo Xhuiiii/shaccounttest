@@ -1,0 +1,60 @@
+<%= form_for @account do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <ul>
+      <% @account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="account-form-container">
+    <div class="row">
+      <div class="col-xs-1">
+      <%= f.label :room_no %>.<br>
+      <%= f.number_field :room_no, :id => "input-no" %>
+      </div>
+      <div class="col-xs-1 price-field">
+      <%= f.label :Price %><br>
+      <%= f.number_field :price, :id => "input-no" %>
+      </div>
+      <div class="col-xs-1 cc-field">
+      <%= f.label :C %><b>C</b><br>
+      <%= f.number_field :cc, :id => "input-no" %>
+      </div>
+      <div class="col-xs-1 ext-field">
+      <%= f.label :ext %><br>
+      <%= f.number_field :extension, :id => "input-no" %>
+      </div>
+      <div class="col-xs-1 dep-field">
+      <%= f.label :deposit %><br>
+      <%= f.number_field :deposit, :id => "input-no" %>
+      </div>
+      <div class="col-xs-1">
+      <%= f.label :misc %>.<br>
+      <%= f.number_field :miscellaneous, :id => "input-no" %>
+      </div>
+    </div>
+    <div class="row col-md-12">
+      <%= f.label :Remark %><br>
+      <%= f.text_area :remark, :id => "input-remark" %>
+    </div>
+  </div>
+
+  <div class="submit-button actions">
+    <%= f.submit "Create Account" %>
+  </div>
+
+
+ <% end %>
+
+<script type="text/javascript">
+ var dp1 = $('#dp1').datepicker({
+    todayHighlight: true,
+    format: 'dd M yyyy'
+  }).on('changeDate', function(ev) {
+    dp1.hide();
+  }).data('datepicker');
+</script>
+ 

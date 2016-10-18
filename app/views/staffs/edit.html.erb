@@ -1,0 +1,41 @@
+<div class="page">
+<%= form_for @staff do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="staff-form-container">
+  <div class="row staff-form">
+	<div class="col-md-2">
+		<%= f.label :name %><br>
+		<%= @staff.name %>
+	</div>
+	<div class="col-md-2">
+		<%= f.label :room_number %><br>
+		<%= @staff.room_number %>
+	</div>
+	<div class="col-md-2 time-in">
+		<%= f.label :time_in %><br>
+		<%= f.time_field :time_in %>
+	</div>
+	<div class="col-md-2 time-out">
+		<%= f.label :time_out %><br>
+		<%= f.time_field :time_out %>
+	</div>
+	<div class="col-md-4">
+		<%= f.label :remark %><br>
+		<%= @staff.remark %>
+	</div>
+	<div class="staff-submit-button action">
+		<%= f.submit "Create housekeeping" %>
+	</div>
+  </div>
+  </div>
+<% end %>
+</div>

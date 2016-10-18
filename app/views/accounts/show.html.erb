@@ -1,0 +1,34 @@
+<div class="page">
+<strong>Account</strong><br>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="date-col">Date</th>
+      <th class="invoice-no-col">Invoice</th>
+      <th class="room-no-col">Room</th>
+      <th class="price-col">Day</th>
+      <th class="extension-col">Ext.</th>
+      <th class="deposit-col">Deposit</th>
+      <th class="misc-col">Misc</th>
+      <th class="remark-col">Remark</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<tr>
+	<td><%= @account.account_date.strftime('%d %b %Y') %></td>
+	<td><%= @account.invoice_no %></td>
+	<td><%= @account.room_no %></td>
+	<td class="price-col"><%= @account.price %></td>
+	<td class="extension-col"><%= @account.extension %></td>
+	<td class="deposit-col"><%= @account.deposit %></td>
+	<td><%= @account.miscellaneous %></td>
+	<td><%= @account.remark %></td>
+	</tr>
+  </tbody>
+</table>
+
+<%= link_to "Edit", edit_account_path(id: @account.id) %> | 
+<%= link_to "New", new_account_path %>
+
+</div>

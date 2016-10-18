@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_number: 1
+  time_in: 2016-10-16 15:14:00
+  time_out: 2016-10-16 15:14:00
+  name: MyText
+  remark: MyText
+
+two:
+  room_number: 1
+  time_in: 2016-10-16 15:14:00
+  time_out: 2016-10-16 15:14:00
+  name: MyText
+  remark: MyText

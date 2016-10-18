@@ -1,0 +1,31 @@
+<div class="page">
+<h2>Choose dates: <br></h2>
+
+<%= form_for @searcher do |f| %>
+  <%= f.text_field :search_from, :class => 'datepicker', :id => "dp1", :placeholder => "Date from" %>
+  <%= f.text_field :search_to, :class => 'datepicker', :id => "dp2", :placeholder => "Date to" %>
+
+  <div class="date-search-button actions">
+    <%= f.submit "Search dates" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  var dp1 = $('#dp1').datepicker({
+    todayHighlight: true,
+    format: 'dd M yyyy'
+  }).on('changeDate', function(ev) {
+    var newDate = new Date(ev.date);
+    dp1.hide();
+    newDate.setDate(newDate.getDate() + 1);
+    $('#dp2').datepicker('setStartDate', newDate);
+    $('#dp2')[0].focus();
+  }).data('datepicker');
+
+  var dp2 = $('#dp2').datepicker({
+    format: 'dd M yyyy'
+  }).on('changeDate', function(ev) {
+    dp2.hide();
+  }).data('datepicker');
+</script>
+</div>

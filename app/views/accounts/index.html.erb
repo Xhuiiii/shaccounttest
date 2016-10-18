@@ -1,0 +1,131 @@
+<div class="page">
+<h2>Accounts for: <%= @search_from.to_date.strftime('%d %b %Y') %> - <%= @search_to.to_date.strftime('%d %b %Y') %></h2>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="date-col">Date</th>
+      <th class="invoice-no-col">Invoice</th>
+      <th class="room-no-col">Room</th>
+      <th class="time-created-col">Time</th>
+      <th class="price-col">Day</th>
+      <th class="gst-col">GST</th>
+      <th class="cc-col">CC</th>
+      <th class="extension-col">Ext.</th>
+      <th class="deposit-col">Deposit</th>
+      <th class="misc-col">Misc</th>
+      <th class="remark-col">Remark</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @day_accounts.each do |account| %>
+        <tr>
+        	<td class="date-col"><%= account.account_date.strftime('%d %b %Y') %></td>
+          <td class="invoice-no-col"><%= account.invoice_no %></td>
+          <td class="room-no-col"><%= account.room_no %></td> 
+          <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
+          <td class="price-col"><%= account.price %></td>
+          <td class="gst-col"><%= (account.price * 0.06).round(2) %></td>
+          <td class="cc-col"><%= account.cc %></td>
+          <td class="extension-col"><%= account.extension %></td>
+          <td class="deposit-col"><%= account.deposit %></td>
+          <td class="misc-col"><%= account.miscellaneous %></td>
+          <td class="remark-col"><%= account.remark %></td>
+          <td><%= link_to "Edit", edit_account_path(id: account.id) %></td>
+        </tr>
+    <% end %>
+    <tr>
+    	<td>Totals</td>
+    	<td class="total invoice-no-col"></td>
+    	<td class="total room-no-col"><%= @day_accounts.length %></td>
+      <td class="total time-created-col"></td>
+    	<td class="total price-col"><%= @day_total_price || 0 %></td>
+      <td class="total gst-col"><%= @day_total_gst.round(2) || 0 %></td>
+      <td class="total cc-col"><%= @day_total_cc %></td>
+      <td class="total extension-col"></td>
+    	<td class="total deposit-col"><%= @day_total_deposit || 0 %></td>
+      <td class="total misc-col"><%= @day_total_misc || 0 %></td>
+      <td class="total total-title-col"></td>
+      <td class="total total-price-col"><%= @day_total %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="date-col">Date</th>
+      <th class="invoice-no-col">Invoice</th>
+      <th class="room-no-col">Room</th>
+      <th class="time-created-col">Time</th>
+      <th class="price-col">Night</th>
+      <th class="gst-col">GST</th>
+      <th class="cc-col">CC</th>
+      <th class="extension-col">Ext.</th>
+      <th class="deposit-col">Deposit</th>
+      <th class="misc-col">Misc</th>
+      <th class="remark-col">Remark</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @night_accounts.each do |account| %>
+        <tr>
+          <td class="date-col"><%= account.account_date.strftime('%d %b %Y') %></td>
+          <td class="invoice-no-col"><%= account.invoice_no %></td>
+          <td class="room-no-col"><%= account.room_no %></td> 
+          <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
+          <td class="price-col"><%= account.price %></td>
+          <td class="gst-col"><%= (account.price * 0.06).round(2) %></td>
+          <td class="cc-col"><%= account.cc %></td>
+          <td class="extension-col"><%= account.extension %></td>
+          <td class="deposit-col"><%= account.deposit %></td>
+          <td class="misc-col"><%= account.miscellaneous %></td>
+          <td class="remark-col"><%= account.remark %></td>
+          <td><%= link_to "Edit", edit_account_path(id: account.id) %></td>
+        </tr>
+    <% end %>
+    <tr>
+      <td>Totals</td>
+      <td class="total invoice-no-col"></td>
+      <td class="total room-no-col"><%= @night_accounts.length %></td>
+      <td class="total time-created-col"></td>
+      <td class="total price-col"><%= @night_total_price || 0 %></td>
+      <td class="total gst-col"><%= @night_total_gst.round(2) || 0 %></td>
+      <td class="cc-col"><%= @night_total_cc %></td>
+      <td class="total extension-col"></td>
+      <td class="total deposit-col"><%= @night_total_deposit || 0 %></td>
+      <td class="total misc-col"><%= @night_total_misc || 0 %></td>
+      <td class="total total-title-col"></td>
+      <td class="total total-price-col"><%= @night_total %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="total total-price-col">Total</th>
+      <th class="total room-no-col">Rooms</th>
+      <th class="total price-col">Night & Day</th>
+      <th class="total gst-col">GST</th>
+      <th class="total cc-col">CC</th>
+      <th class="total deposit-col">Deposit</th>
+      <th class="total misc-col">Miscellaneous</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="total total-price-col"><%= @total %></td>
+      <td class="total room-no-col"><%= @accounts.length %></td>
+      <td class="total price-col"><%= @total_price %></td>
+      <td class="total gst-col"><%= @total_gst.round(2) %></td>
+      <td class="total cc-col"><%= @total_cc %></td>
+      <td class="total deposit-col"><%= @total_deposit %></td>
+      <td class="total misc-col"><%= @total_misc %></td>
+    </tr>
+  </tbody>
+</table>
+</div>

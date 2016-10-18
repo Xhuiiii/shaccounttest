@@ -1,0 +1,26 @@
+// Place all the styles related to the staff controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.account-form-container{
+	margin: 0;
+	padding: 0;
+}
+
+.account-form{
+	margin-left: 1rem;
+}
+.staff-submit-button{
+	margin-left: 1.5rem;
+	margin-top: 1.5rem;
+	padding-top: 5rem;
+}
+
+.time-in,
+.time-in-col{
+	color: green;
+}
+.time-out, 
+.time-out-col{
+	color: red;
+}

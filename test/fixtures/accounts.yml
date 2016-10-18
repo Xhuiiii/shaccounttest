@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invoice_no: 1
+  room_no: 1
+  price: 1
+  extension: 1
+  deposit: 1
+  miscellaneous: MyText
+  remark: MyText
+  date: 2016-10-16
+
+two:
+  invoice_no: 1
+  room_no: 1
+  price: 1
+  extension: 1
+  deposit: 1
+  miscellaneous: MyText
+  remark: MyText
+  date: 2016-10-16
