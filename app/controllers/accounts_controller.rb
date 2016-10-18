@@ -107,6 +107,7 @@ class AccountsController < ApplicationController
   	@account = Account.new(account_params)
     @housekeeping = Staff.new
     @housekeeping.room_number = @account.room_no
+    @account.old_room = nil
 
     day_start = Time.parse "08:00 am"
     night_start = Time.parse "08:00 pm"
