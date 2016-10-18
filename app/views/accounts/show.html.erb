@@ -11,6 +11,7 @@
       <th class="deposit-col">Deposit</th>
       <th class="misc-col">Misc</th>
       <th class="remark-col">Remark</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -24,11 +25,11 @@
 	<td class="deposit-col"><%= @account.deposit %></td>
 	<td><%= @account.miscellaneous %></td>
 	<td><%= @account.remark %></td>
+  <td><%= link_to "Edit", edit_account_path(id: @account.id) %></td>
 	</tr>
   </tbody>
 </table>
-
-<%= link_to "Edit", edit_account_path(id: @account.id) %> | 
+ 
 <%= link_to "New", new_account_path %>
 
 </div>
