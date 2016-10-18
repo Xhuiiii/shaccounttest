@@ -24,8 +24,8 @@ class Account < ActiveRecord::Base
 	    @total_accounts.each do |account|
 	      @total_room_numbers << account.room_no
 	    end
-	    @yesterdays_housekeeping = Staff.where("DATE(created_at) = ?", Date.today - 1)
-	    @todays_housekeeping = Staff.where("DATE(created_at) = ?", Date.today)
+	    @yesterdays_housekeeping = Staff.where("DATE(created_at) = ?", Date.today - 1).where.not(:time_out => nil)
+	    @todays_housekeeping = Staff.where("DATE(created_at) = ?", Date.today).where.not(:time_out => nil)
 	    @total_housekeeping = []
 	    @total_housekeeping = @yesterdays_housekeeping + @todays_housekeeping
 	    @total_housekeeping.each do |cleaned|
@@ -37,9 +37,8 @@ class Account < ActiveRecord::Base
 	      end
 	    end
 
-    	@room_cleaned = true
-    	@total_room_numbers.each do |rms|
-	      	if self.room_no == rms
+    	@total_room_numbers.each do |uncleaned_rms|
+	      	if self.room_no == uncleaned_rms
 	        	errors.add(:account, 'Room not cleaned.')
 	       		break
 	      	end

@@ -107,7 +107,6 @@ class AccountsController < ApplicationController
   	@account = Account.new(account_params)
     @housekeeping = Staff.new
     @housekeeping.room_number = @account.room_no
-    @housekeeping.save!
 
     day_start = Time.parse "08:00 am"
     night_start = Time.parse "08:00 pm"
@@ -137,6 +136,7 @@ class AccountsController < ApplicationController
     end
 
     if @account.save
+      @housekeeping.save!
       redirect_to @account, notice: 'Account was successfully created.'
     else
       render :new
