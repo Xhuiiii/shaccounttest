@@ -15,8 +15,7 @@
 			<li class="new-tab"><%= link_to "New", new_account_path %></li>
 			<li class="day-tab"><%= link_to "Day", accounts_path(today_day: true) %></li>
 			<li class="night-tab"><%= link_to "Night", accounts_path(today_night: true) %></li>
-			<li class="today-tab pull-right"><%= link_to "Today", staffs_path(date: Date.today) %></li>
-			<li class="clean-tab pull-right"><%= link_to "Clean room", new_staff_path %></li> 
+			<li class="today-tab pull-right"><%= link_to "Clean room", staffs_path(date: Date.today) %></li>
 			<li class="records-tab pull-right"><%= link_to "Records", new_staffsearch_path %></li>
 		</ul>
 	</div>

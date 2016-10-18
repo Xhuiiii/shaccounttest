@@ -17,7 +17,11 @@
       <tr>
       	<td class="col-md-1 staff-name-col"><%= staff.name %></td>
         <td class="col-md-1 room-no-col"><%= staff.room_number %></td>
+        <% if staff.time_in %>
         <td class="col-md-1 time-in-col"><%= staff.time_in.strftime("%I:%M %p") %></td> 
+        <% else %>
+        <td class="col-md-1 time-in-col"></td>
+        <% end %>
         <% if staff.time_out %>
         <td class="col-md-1 time-out-col"><%= staff.time_out.strftime("%I:%M %p") %></td>
         <% else %>
