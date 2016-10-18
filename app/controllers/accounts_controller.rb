@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
       @day_accounts = @day_accounts.sort_by {|acc| acc.invoice_no}
       @day_accounts.each do |account|
         @day_total_price += account.price
-        @day_total_gst += ((account.price * 0.06)/1.06)
+        @day_total_gst += ((account.price/1.06)* 0.06)
         @day_total_deposit += account.deposit
         @day_total_misc += account.miscellaneous || 0
         @day_total_cc += account.cc || 0
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
       @night_accounts = @night_accounts.sort_by {|acc| acc.invoice_no}
       @night_accounts.each do |account|
         @night_total_price += account.price
-        @night_total_gst += ((account.price * 0.06)/1.06)
+        @night_total_gst += ((account.price/1.06)* 0.06)
         @night_total_deposit += account.deposit
         @night_total_misc += account.miscellaneous || 0
         @night_total_cc += account.cc || 0
@@ -71,19 +71,19 @@ class AccountsController < ApplicationController
   		@accounts.each do |account|
         if account.day
           @day_total_price += account.price
-          @day_total_gst += ((account.price * 0.06)/1.06)
+          @day_total_gst += ((account.price/1.06)* 0.06)
           @day_total_deposit += account.deposit
           @day_total_misc += account.miscellaneous || 0
           @day_total_cc += account.cc || 0
         elsif account.night
           @night_total_price += account.price
-          @night_total_gst += ((account.price * 0.06)/1.06)
+          @night_total_gst += ((account.price/1.06)* 0.06)
           @night_total_deposit += account.deposit
           @night_total_misc += account.miscellaneous || 0
           @night_total_cc += account.cc || 0
         end
   			@total_price += account.price
-        @total_gst += ((account.price * 0.06)/1.06)
+        @total_gst += ((account.price/1.06)* 0.06)
   			@total_deposit += account.deposit
         @total_misc += account.miscellaneous || 0
         @total_cc += account.cc || 0

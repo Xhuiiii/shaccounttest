@@ -26,7 +26,7 @@
           <td class="room-no-col"><%= account.room_no %></td> 
           <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
           <td class="price-col"><%= account.price %></td>
-          <td class="gst-col"><%= (account.price * 0.06).round(2) %></td>
+          <td class="gst-col"><%= ((account.price/1.06)* 0.06).round(2) %></td>
           <td class="cc-col"><%= account.cc %></td>
           <td class="extension-col"><%= account.extension %></td>
           <td class="deposit-col"><%= account.deposit %></td>
@@ -78,7 +78,7 @@
           <td class="room-no-col"><%= account.room_no %></td> 
           <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
           <td class="price-col"><%= account.price %></td>
-          <td class="gst-col"><%= (account.price * 0.06).round(2) %></td>
+          <td class="gst-col"><%= ((account.price/1.06)* 0.06).round(2) %></td>
           <td class="cc-col"><%= account.cc %></td>
           <td class="extension-col"><%= account.extension %></td>
           <td class="deposit-col"><%= account.deposit %></td>
