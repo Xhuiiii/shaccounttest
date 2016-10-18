@@ -11,42 +11,39 @@
   <% end %>
   <div class="account-form-container">
     <div class="row">
-      <div class="col-xs-1">
-      <%= f.label :room_no %>.<br>
+      <div class="room-field">
+      <%= f.label :room %><br>
       <%= f.number_field :room_no, :id => "input-no" %>
-      </div>
-      <div class="col-xs-1 price-field">
-      <%= f.label :Price %><br>
-      <%= f.number_field :price, :id => "input-no" %>
-      </div>
-      <div class="col-xs-1 cc-field">
-      <%= f.label :C %><b>C</b><br>
-      <%= f.number_field :cc, :id => "input-no" %>
-      </div>
-      <div class="col-xs-1 ext-field">
-      <%= f.label :ext %><br>
-      <%= f.number_field :extension, :id => "input-no" %>
-      </div>
-      <div class="col-xs-1 dep-field">
-      <%= f.label :deposit %><br>
-      <%= f.number_field :deposit, :id => "input-no" %>
-      </div>
-      <div class="col-xs-1">
-      <%= f.label :misc %>.<br>
-      <%= f.number_field :miscellaneous, :id => "input-no" %>
+        <div class="price-field">
+        <%= f.label :Price %><br>
+        <%= f.number_field :price, :id => "input-no" %>
+          <div class="cc-field">
+          <%= f.label :C %><b>C</b><br>
+          <%= f.number_field :cc, :id => "input-no" %>
+            <div class="ext-field">
+            <%= f.label :ext %><br>
+            <%= f.number_field :extension, :id => "input-no" %>
+              <div class="dep-field">
+              <%= f.label :deposit %><br>
+              <%= f.number_field :deposit, :id => "input-no" %>
+                <div class="misc-field">
+                <%= f.label :misc %>.<br>
+                <%= f.number_field :miscellaneous, :id => "input-no" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row col-md-12">
+    <div class="account-remark">
       <%= f.label :Remark %><br>
-      <%= f.text_area :remark, :id => "input-remark" %>
+      <%= f.text_area :remark %>
+        <div class="submit-button actions">
+          <%= f.submit "Create Account" %>
+        </div>
     </div>
   </div>
-
-  <div class="submit-button actions">
-    <%= f.submit "Create Account" %>
-  </div>
-
-
  <% end %>
 
 <script type="text/javascript">

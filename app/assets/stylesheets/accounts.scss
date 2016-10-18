@@ -30,11 +30,12 @@
 .account-form-container{
 	margin: 0;
 	padding: 0;
+	position: fixed;
 }
 
 .submit-button{
-	position: static;
-	padding-top: 7rem;
+	position: relative;
+	padding-top: 2rem;
 }
 
 .date-search-button{
@@ -56,4 +57,84 @@
 
 #input-no{
 	width: 50px;
+}
+
+@media (min-width: 568px){
+
+.room-field{
+	position: fixed;
+	top: 12rem;
+	left: 8rem;
+}
+
+.price-field{
+	position: absolute;
+	top: 0;
+	left: 6.5rem;
+}
+
+.cc-field{
+	position: absolute;
+	top: 0;
+	left: 6.5rem;
+}
+
+.ext-field{
+	position: absolute;
+	top: 0;
+	left: 6.5rem;
+}
+
+.dep-field{
+	position: absolute;
+	top: 0;
+	left: 6.5rem;
+}
+
+.misc-field{
+	position: absolute;
+	top: 0;
+	left: 6.5rem;
+}
+
+.account-remark{
+	position: fixed;
+	top: 18rem;
+	left: 8rem;
+}
+}
+
+@media (max-width: 568px){
+
+.room-field{
+	position: fixed;
+	top: 17rem;
+	left: 8rem;
+}
+
+.price-field{
+	position: absolute;
+}
+
+.cc-field{
+	position: absolute;
+}
+
+.ext-field{
+	position: absolute;
+}
+
+.dep-field{
+	position: absolute;
+}
+
+.misc-field{
+	position: absolute;
+}
+
+.account-remark{
+	position: fixed;
+	top: 48rem;
+	left: 8rem;
+}
 }

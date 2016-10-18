@@ -12,28 +12,28 @@
   <% end %>
  <div class="staff-form-container">
   <div class="row staff-form">
-	<div class="col-md-2">
+	<div class="name">
 		<%= f.label :name %><br>
-		<%= f.text_field :name %>
+		<%= f.text_field :name, :class => "name-field" %>
+		<div class="room">
+			<%= f.label :room %><br>
+			<%= @staff.room_number %>
+			<div class="time-in">
+				<%= f.label :time_in %><br>
+				<%= f.time_field :time_in %>
+				<div class="time-out">
+					<%= f.label :time_out %><br>
+					<%= f.time_field :time_out %>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-2">
-		<%= f.label :room_number %><br>
-		<%= @staff.room_number %>
-	</div>
-	<div class="col-md-2 time-in">
-		<%= f.label :time_in %><br>
-		<%= f.time_field :time_in %>
-	</div>
-	<div class="col-md-2 time-out">
-		<%= f.label :time_out %><br>
-		<%= f.time_field :time_out %>
-	</div>
-	<div class="col-md-12">
+	<div class="remark">
 		<%= f.label :remark %><br>
 		<%= f.text_area :remark %>
-	</div>
-	<div class="staff-submit-button action">
-		<%= f.submit "Create housekeeping" %>
+			<div class="staff-submit-button action">
+				<%= f.submit "Create housekeeping" %>
+			</div>
 	</div>
   </div>
   </div>

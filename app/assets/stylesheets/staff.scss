@@ -5,22 +5,59 @@
 .account-form-container{
 	margin: 0;
 	padding: 0;
+	position: fixed;
 }
 
 .account-form{
 	margin-left: 1rem;
 }
 .staff-submit-button{
-	margin-left: 1.5rem;
-	margin-top: 1.5rem;
-	padding-top: 5rem;
+	position: relative;
+	top: 1rem;
 }
 
 .time-in,
 .time-in-col{
 	color: green;
 }
-.time-out, 
+
+.time-out,
 .time-out-col{
 	color: red;
+}
+
+.name-field{
+	width: 80px;
+}
+
+@media (min-width: 568px){
+.name{
+	position: fixed;
+	top: 6rem;
+	left: 8rem;
+}
+
+.room{
+	position: absolute;
+	left: 10rem;
+	top: 0;
+}
+
+.time-in{
+	position: absolute;
+	left: 7rem;
+	top: 0;
+}
+
+.time-out{
+	position: absolute;
+	left: 11rem;
+	top: 0;
+}
+
+.remark{
+	position: fixed;
+	top: 13rem;
+	left: 8rem;
+}
 }
