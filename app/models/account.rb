@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
 
     	@total_room_numbers.each do |uncleaned_rms|
 	      	if self.room_no == uncleaned_rms 
-	      		if self.old_room
+	      		if self.old_room != nil
 		      		if self.room_no != self.old_room
 			        	errors.add(:account, 'Room not cleaned.')
 			       		break
