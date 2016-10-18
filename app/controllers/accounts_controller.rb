@@ -27,7 +27,7 @@ class AccountsController < ApplicationController
 
     if params[:today_day]
       @day_accounts = Account.where(:day => true, :account_date => Date.today)
-      @day_accounts.sort_by{|acc| acc.invoice_no}
+      @day_accounts = @day_accounts.sort_by {|acc| acc.invoice_no}
       @day_accounts.each do |account|
         @day_total_price += account.price
         @day_total_gst += (account.price * 0.06)
@@ -50,7 +50,7 @@ class AccountsController < ApplicationController
       else
         @night_accounts = Account.where(:night => true, :account_date => Date.today)
       end
-      @night_accounts.sort_by{|acc| acc.invoice_no}
+      @night_accounts = @night_accounts.sort_by {|acc| acc.invoice_no}
       @night_accounts.each do |account|
         @night_total_price += account.price
         @night_total_gst += (account.price * 0.06)
@@ -65,9 +65,9 @@ class AccountsController < ApplicationController
   	if(@search_from && @search_to)
   		@accounts = Account.where(:account_date => @search_from.to_time..@search_to.to_time)
       @day_accounts = @accounts.where(:day => true)
-      @day_accounts.sort_by{|acc| acc.invoice_no}
+      @day_accounts = @day_accounts.sort_by {|acc| acc.invoice_no}
       @night_accounts = @accounts.where(:night => true)
-      @night_accounts.sort_by{|acc| acc.invoice_no}
+      @night_accounts = @night_accounts.sort_by {|acc| acc.invoice_no}
   		@accounts.each do |account|
         if account.day
           @day_total_price += account.price
