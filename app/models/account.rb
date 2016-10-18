@@ -11,7 +11,7 @@ class Account < ActiveRecord::Base
 		validates_presence_of :day
 	end
 		
-	validate :check_rm_cleaned
+	validate :check_rm_cleaned, :on => :create
 
     private 
 
