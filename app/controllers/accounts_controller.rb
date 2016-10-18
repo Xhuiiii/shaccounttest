@@ -149,6 +149,7 @@ class AccountsController < ApplicationController
 
   def update 
     @account = Account.find(params[:id])
+    @account.old_room = @account.room_no
     @housekeeping = Staff.find_by(:room_number => @account.room_no)
   	if @account.update(account_params)
       @housekeeping.update(:room_number => account_params[:room_no])
@@ -160,6 +161,6 @@ class AccountsController < ApplicationController
 
   private 
   def account_params
-  	params.require(:account).permit(:cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
+  	params.require(:account).permit(:old_room, :cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
   end
 end

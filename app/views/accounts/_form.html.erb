@@ -1,14 +1,4 @@
 <%= form_for @account do |f| %>
-  <% if @account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-      <ul>
-      <% @account.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="account-form-container">
     <div class="row">
       <div class="room-field">
@@ -24,7 +14,7 @@
             <%= f.label :ext %><br>
             <%= f.number_field :extension, :id => "input-no" %>
               <div class="dep-field">
-              <%= f.label :deposit %><br>
+              <%= f.label :dep %><br>
               <%= f.number_field :deposit, :id => "input-no" %>
                 <div class="misc-field">
                 <%= f.label :misc %>.<br>
@@ -43,6 +33,16 @@
           <%= f.submit "Create Account" %>
         </div>
     </div>
+    <% if @account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+        <ul>
+        <% @account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
  <% end %>
 
