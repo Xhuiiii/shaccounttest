@@ -121,8 +121,6 @@ class AccountsController < ApplicationController
 
   def create 
   	@account = Account.new(account_params)
-    @housekeeping = Staff.new
-    @housekeeping.room_number = @account.room_no
     @account.old_room = nil
 
     day_start = Time.parse "08:00 am"
@@ -152,8 +150,19 @@ class AccountsController < ApplicationController
       @account.invoice_no = 1
     end
 
+    #Create housekeeping for each day
+    @housekeepings = []
+    @account.days.times do |d|
+      @housekeeping = Staff.new
+      @housekeeping.room_number = @account.room_no
+      @housekeeping.housekeeping_date = (Date.today + d.day)
+      @housekeepings << @housekeeping
+    end
+
     if @account.save
-      @housekeeping.save!
+      @housekeepings.each do |hs|
+        hs.save!
+      end
       redirect_to @account, notice: 'Account was successfully created.'
     else
       render :new

@@ -5,7 +5,7 @@ class StaffsController < ApplicationController
 
   def create
     @staff = Staff.new(staff_params)
-
+    @staff.housekeeping_date = Date.today
     if @staff.save
       redirect_to staffs_path(date: Date.today), notice: "Housekeeping was successfully created."
     else
@@ -18,9 +18,9 @@ class StaffsController < ApplicationController
     @yesterday = params[:date].to_date - 1.day
     @date_chosen_format = params[:date].to_date.strftime('%d %b %Y')
     @yesterday_format = @yesterday.strftime('%d %b %Y')
-    @yes_staffs = Staff.where("DATE(created_at) = ?", @yesterday)
+    @yes_staffs = Staff.where(:housekeeping_date => @yesterday)
     @yes_staffs = @yes_staffs.sort_by {|yes| yes.room_number}
-    @to_staffs = Staff.where("DATE(created_at) = ?", @date_chosen)
+    @to_staffs = Staff.where(:housekeeping_date => @date_chosen)
     @to_staffs = @to_staffs.sort_by {|tos| tos.room_number}
   end
 
@@ -39,7 +39,7 @@ class StaffsController < ApplicationController
 
   private
   def staff_params
-  	params.require(:staff).permit(:room_number, :time_in, :time_out, :name, :remark)
+  	params.require(:staff).permit(:housekeeping_date, :room_number, :time_in, :time_out, :name, :remark)
   end
 
 end

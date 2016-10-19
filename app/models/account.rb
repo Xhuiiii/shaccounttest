@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
 	has_one :account_searcher
 
 	validates_presence_of :room_no
+	validates_presence_of :days
 	validates_presence_of :price
 	validates_presence_of :deposit
 	if !:day
