@@ -1,4 +1,18 @@
 class StaffsController < ApplicationController
+  def new
+    @staff = Staff.new
+  end
+
+  def create
+    @staff = Staff.new(staff_params)
+
+    if @staff.save
+      redirect_to staffs_path(date: Date.today), notice: "Housekeeping was successfully created."
+    else
+      render :new
+    end
+  end
+
   def index
     @date_chosen = params[:date]
     @yesterday = params[:date].to_date - 1.day

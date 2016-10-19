@@ -17,7 +17,7 @@
 		<%= f.text_field :name, :class => "name-field" %>
 		<div class="room">
 			<%= f.label :room %><br>
-			<%= @staff.room_number %>
+			<%= f.number_field :room_number, :id => "room-num-field" %>
 			<div class="time-in">
 				<%= f.label :time_in %><br>
 				<%= f.time_select :time_in, ampm: true, include_blank: true, ignore_date: true%>		
@@ -39,4 +39,3 @@
   </div>
 <% end %>
 </div>
-
