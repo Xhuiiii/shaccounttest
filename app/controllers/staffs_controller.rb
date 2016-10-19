@@ -28,5 +28,4 @@ class StaffsController < ApplicationController
   	params.require(:staff).permit(:room_number, :time_in, :time_out, :name, :remark)
   end
 
-
 end
