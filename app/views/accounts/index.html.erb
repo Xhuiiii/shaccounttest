@@ -142,8 +142,10 @@
       <th class="total gst-col">GST</th>
       <th class="total cc-col">CC</th>
       <th class="total gst-col">CC GST</th>
-      <th class="hr-col">Hr Use</th>
-      <th class="cc-col">Hr CC</th>
+      <th class="total hr-col">Hr Use</th>
+      <th class="total gst-col">Hr GST</th>
+      <th class="total cc-col">Hr CC</th>
+      <th class="total gst-col">Hr CC GST</th>
       <th class="total deposit-col">Deposit</th>
       <th class="total misc-col">Miscellaneous</th>
     </tr>
@@ -154,18 +156,28 @@
       <td class="total room-no-col"><%= @accounts.length %></td>
       <td class="total price-col"><%= @total_price %></td>
       <% if @total_gst %>
-      <td class="total gst-col"><%= @total_gst.round(2) %></td>
+        <td class="total gst-col"><%= @total_gst.round(2) %></td>
       <% else %>
-      <td class="total gst-col">0</td>
+        <td class="total gst-col">0</td>
       <% end %>
       <td class="total cc-col"><%= @total_cc %></td>
       <% if @total_cc %>
-      <td class="total gst-col"><%= ((@total_cc/1.06)* 0.06).round(2) %></td>
+        <td class="total gst-col"><%= ((@total_cc/1.06)* 0.06).round(2) %></td>
       <% else %>
-      <td class="total gst-col">0</td>
+        <td class="total gst-col">0</td>
       <% end %>
-      <td class="hr-col"><%= @total_hr %></td>
-      <td class="cc-col"><%= @total_hr_cc %></td>
+      <td class="total hr-col"><%= @total_hr %></td>
+      <% if @total_hr %>
+        <td class="total gst-col"><%= ((@total_hr/1.06)* 0.06).round(2) %></td>
+      <% else %>
+        <td class="total gst-col">0</td>
+      <% end %>
+      <td class="total cc-col"><%= @total_hr_cc %></td>
+      <% if @total_hr_cc %>
+        <td class="total gst-col"><%= ((@total_hr_cc/1.06)* 0.06).round(2) %></td>
+      <% else %>
+        <td class="total gst-col">0</td>
+      <% end %>
       <td class="total deposit-col"><%= @total_deposit %></td>
       <td class="total misc-col"><%= @total_misc %></td>
     </tr>
