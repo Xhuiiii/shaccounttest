@@ -3,11 +3,11 @@ class StaffsController < ApplicationController
     @date_chosen = params[:date]
     @yesterday = params[:date].to_date - 1.day
     @date_chosen_format = params[:date].to_date.strftime('%d %b %Y')
+    @yesterday_format = @yesterday.strftime('%d %b %Y')
     @yes_staffs = Staff.where("DATE(created_at) = ?", @yesterday)
+    @yes_staffs = @yes_staffs.sort_by {|yes| yes.room_number}
     @to_staffs = Staff.where("DATE(created_at) = ?", @date_chosen)
-    @staffs = @yes_staffs + @to_staffs
-    @staffs = @staffs.sort_by {|sta| sta.room_number}
-    @first = @staffs[0]
+    @to_staffs = @to_staffs.sort_by {|tos| tos.room_number}
   end
 
   def edit

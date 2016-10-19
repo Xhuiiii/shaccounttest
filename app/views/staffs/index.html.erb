@@ -1,5 +1,5 @@
 <div class="page">
-<h3>Staff work for: <%= @date_chosen_format %></h3>
+<h3>Staff work for: <%= @yesterday_format %></h3>
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
@@ -13,9 +13,45 @@
   </thead>
 
   <tbody>
-    <% @staffs.each do |staff| %>
+    <% @yes_staffs.each do |staff| %>
       <tr>
       	<td class="col-md-1 staff-name-col"><%= staff.name %></td>
+        <td class="col-md-1 room-no-col"><%= staff.room_number %></td>
+        <% if staff.time_in %>
+        <td class="col-md-1 time-in-col"><%= staff.time_in.strftime("%I:%M %p") %></td> 
+        <% else %>
+        <td class="col-md-1 time-in-col"></td>
+        <% end %>
+        <% if staff.time_out %>
+        <td class="col-md-1 time-out-col"><%= staff.time_out.strftime("%I:%M %p") %></td>
+        <% else %>
+        <td class="col-md-1 time-out-col"></td>
+        <% end %>
+        <td class="col-md-8 remark-col"><%= staff.remark %></td>
+        <td><%= link_to "Edit", edit_staff_path(id: staff.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Staff work for: <%= @date_chosen_format %></h3>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th class="col-md-1 staff-name-col">Name</th>
+      <th class="col-md-1 room-no-col">Room no.</th>
+      <th class="col-md-1 time-in-col">Time in</th>
+      <th class="col-md-1 time-out-col">Time out</th>
+      <th class="col-md-8 remark-col">Remark</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @to_staffs.each do |staff| %>
+      <tr>
+        <td class="col-md-1 staff-name-col"><%= staff.name %></td>
         <td class="col-md-1 room-no-col"><%= staff.room_number %></td>
         <% if staff.time_in %>
         <td class="col-md-1 time-in-col"><%= staff.time_in.strftime("%I:%M %p") %></td> 
