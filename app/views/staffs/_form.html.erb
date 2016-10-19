@@ -20,10 +20,10 @@
 			<%= @staff.room_number %>
 			<div class="time-in">
 				<%= f.label :time_in %><br>
-				<%= f.time_field :time_in %>
+				<%= f.time_field :time_in, value: "%H:%M" %>
 				<div class="time-out">
 					<%= f.label :time_out %><br>
-					<%= f.time_field :time_out %>
+					<%= f.time_field :time_out, value: "%H:%M" %>
 				</div>
 			</div>
 		</div>
