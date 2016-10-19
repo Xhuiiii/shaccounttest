@@ -178,6 +178,6 @@ class AccountsController < ApplicationController
 
   private 
   def account_params
-  	params.require(:account).permit(:hr_use, :hr_cc, :old_room, :cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
+  	params.require(:account).permit(:days, :hr_use, :hr_cc, :old_room, :cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
   end
 end

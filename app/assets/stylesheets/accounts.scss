@@ -62,7 +62,8 @@
 }
 
 .misc-field,
-.hr-cc-field{
+.hr-cc-field, 
+.days-field{
 	color:black;
 }
 
@@ -70,7 +71,7 @@
 	width: 50px;
 }
 
-@media (min-width: 623px){
+@media (min-width: 690px){
 #error_explanation{
 	position: fixed;
 	top: 30rem;
@@ -82,6 +83,12 @@
 	position: fixed;
 	top: 12rem;
 	left: 8rem;
+}
+
+.days-field{
+	position: absolute;
+	top: 0;
+	left: 7rem;
 }
 
 .price-field{
@@ -133,7 +140,7 @@
 }
 }
 
-@media (max-width: 623px){
+@media (max-width: 690px){
 #error_explanation{
 	position: fixed;
 	top: 60rem;
@@ -143,8 +150,12 @@
 
 .room-field{
 	position: fixed;
-	top: 17rem;
+	top: 15rem;
 	left: 8rem;
+}
+
+.days-field{
+	position: absolute;
 }
 
 .price-field{
@@ -177,7 +188,7 @@
 
 .account-remark{
 	position: fixed;
-	top: 58rem;
+	top: 61rem;
 	left: 8rem;
 }
 
