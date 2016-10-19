@@ -10,8 +10,8 @@
       <th class="price-col">Day</th>
       <th class="gst-col">GST</th>
       <th class="cc-col">CC</th>
-      <th class="gst-col">CC GST</th>
       <th class="hr-col">Hr Use</th>
+      <th class="cc-col">Hr CC</th>
       <th class="extension-col">Ext.</th>
       <th class="deposit-col">Deposit</th>
       <th class="misc-col">Misc</th>
@@ -34,12 +34,8 @@
           <td class="gst-col">0</td>
           <% end %>
           <td class="cc-col"><%= account.cc %></td>
-          <% if account.cc %>
-          <td class="gst-col"><%= ((account.cc/1.06)* 0.06).round(2) %></td>
-          <% else %>
-          <td class="gst-col">0</td>
-          <% end %>
           <td class="hr-col"><%= account.hr_use %></td>
+          <td class="cc-col"><%= account.hr_cc %></td>
           <td class="extension-col"><%= account.extension %></td>
           <td class="deposit-col"><%= account.deposit %></td>
           <td class="misc-col"><%= account.miscellaneous %></td>
@@ -59,12 +55,8 @@
       <td class="total gst-col">0</td>
       <% end %>
       <td class="total cc-col"><%= @day_total_cc %></td>
-      <% if @day_total_cc %>
-      <td class="total gst-col"><%= ((@day_total_cc/1.06)* 0.06).round(2) %></td>
-      <% else %>
-      <td class="total gst-col">0</td>
-      <% end %>
       <td class="hr-col"><%= @day_total_hr || 0 %></td>
+      <td class="cc-col"><%= @day_total_hr_cc || 0 %></td>
       <td class="total extension-col"></td>
     	<td class="total deposit-col"><%= @day_total_deposit || 0 %></td>
       <td class="total misc-col"><%= @day_total_misc || 0 %></td>
@@ -84,8 +76,8 @@
       <th class="price-col">Night</th>
       <th class="gst-col">GST</th>
       <th class="cc-col">CC</th>
-      <th class="gst-col">CC GST</th>
-      <th class="hr-col"><%= account.hr_use %></th>
+      <th class="hr-col">Hr Use</th>
+      <th class="cc-col">Hr CC</th>
       <th class="extension-col">Ext.</th>
       <th class="deposit-col">Deposit</th>
       <th class="misc-col">Misc</th>
@@ -108,12 +100,8 @@
           <td class="gst-col">0</td>
           <% end %>
           <td class="cc-col"><%= account.cc %></td>
-          <% if account.cc %>
-          <td class="gst-col"><%= ((account.cc/1.06)* 0.06).round(2) %></td>
-          <% else %>
-          <td class="gst-col">0</td>
-          <% end %>
           <td class="hr-col"><%= account.hr_use %></td>
+          <td class="cc-col"><%= account.hr_cc %></td>
           <td class="extension-col"><%= account.extension %></td>
           <td class="deposit-col"><%= account.deposit %></td>
           <td class="misc-col"><%= account.miscellaneous %></td>
@@ -133,12 +121,8 @@
       <td class="total gst-col">0</td>
       <% end %>
       <td class="total cc-col"><%= @night_total_cc %></td>
-      <% if @night_total_cc %>
-      <td class="total gst-col"><%= ((@night_total_cc/1.06)* 0.06).round(2) %></td>
-      <% else %>
-      <td class="total gst-col">0</td>
-      <% end %>
       <td class="total hr-col"><%= @night_total_hr %></td>
+      <td class="total cc-col"><%= @night_total_hr_cc %></td>
       <td class="total extension-col"></td>
       <td class="total deposit-col"><%= @night_total_deposit || 0 %></td>
       <td class="total misc-col"><%= @night_total_misc || 0 %></td>
@@ -148,6 +132,7 @@
   </tbody>
 </table>
 
+<!-- Total table  -->
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -158,6 +143,7 @@
       <th class="total cc-col">CC</th>
       <th class="total gst-col">CC GST</th>
       <th class="hr-col">Hr Use</th>
+      <th class="cc-col">Hr CC</th>
       <th class="total deposit-col">Deposit</th>
       <th class="total misc-col">Miscellaneous</th>
     </tr>
@@ -179,6 +165,7 @@
       <td class="total gst-col">0</td>
       <% end %>
       <td class="hr-col"><%= @total_hr %></td>
+      <td class="cc-col"><%= @total_hr_cc %></td>
       <td class="total deposit-col"><%= @total_deposit %></td>
       <td class="total misc-col"><%= @total_misc %></td>
     </tr>
