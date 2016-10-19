@@ -7,8 +7,8 @@
       <th class="room-no-col">Room</th>
       <th class="time-created-col">Time</th>
       <th class="price-col">Night</th>
-      <th class="gst-col">GST</th>
       <th class="cc-col">CC</th>
+      <th class="gst-col">GST</th>
       <th class="hr-col">Hr Use</th>
       <th class="cc-col">Hr CC</th>
       <th class="extension-col">Ext.</th>
@@ -27,12 +27,12 @@
           <td class="room-no-col"><%= account.room_no %></td> 
           <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
           <td class="price-col"><%= account.price %></td>
+          <td class="cc-col"><%= account.cc %></td>
           <% if account.price %>
           <td class="gst-col"><%= ((account.price/1.06)* 0.06).round(2) %></td>
           <% else %>
           <td class="gst-col">0</td>
           <% end %>
-          <td class="cc-col"><%= account.cc %></td>
           <td class="hr-col"><%= account.hr_use %></td>
           <td class="cc-col"><%= account.hr_cc %></td>
           <td class="extension-col"><%= account.extension %></td>
@@ -43,22 +43,22 @@
         </tr>
     <% end %>
     <tr>
-      <td class="total">Totals</td>
+      <td class="total total-title">Totals</td>
       <td class="total invoice-no-col"></td>
       <td class="total room-no-col"><%= @night_accounts.length %></td>
       <td class="total time-created-col"></td>
-      <td class="total price-col"><%= @night_total_price || 0 %></td>
+      <td class="total total-night-price"><%= @night_total_price || 0 %></td>
+      <td class="total cc-col"><%= @night_total_cc %></td>
       <% if @night_total_gst %>
       <td class="total gst-col"><%= @night_total_gst.round(2) %></td>
       <% else %>
       <td class="total gst-col">0</td>
       <% end %>
-      <td class="total cc-col"><%= @night_total_cc %></td>
-      <td class="total hr-col"><%= @night_total_hr || 0 %></td>
+      <td class="total total-hr-col"><%= @night_total_hr || 0 %></td>
       <td class="total cc-col"><%= @night_total_hr_cc || 0 %></td>
       <td class="total extension-col"></td>
       <td class="total deposit-col"><%= @night_total_deposit || 0 %></td>
-      <td class="total misc-col"><%= @night_total_misc || 0 %></td>
+      <td class="total total-misc-col"><%= @night_total_misc || 0 %></td>
       <td class="total total-title-col"></td>
       <td class="total total-price-col"><%= @night_total %></td>
     </tr>

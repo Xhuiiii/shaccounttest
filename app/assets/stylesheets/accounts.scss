@@ -3,6 +3,23 @@
 	margin-right: 8rem;
 }
 
+th{
+	background-color: lightgrey;
+}
+
+.total-title,
+.total-price-col{
+	background-color: greenyellow;
+}
+
+.total-day-price, 
+.total-night-price,
+.total-price,
+.total-hr-col,
+.total-misc-col{
+	background-color: gold;
+}
+
 .day-price-col{
 	color: darkorange;
 }
@@ -12,7 +29,9 @@
 
 .extension-col,
 .hr-col{
-	color: purple;
+	color: darkorchid;
+	font-weight: bold;
+	font-size: 1.7rem;
 }
 
 .time-created-col{
@@ -54,7 +73,7 @@
 
 .ext-field,
 .hr-field{
-	color: purple;
+	color: darkorchid;
 }
 
 .dep-field{
