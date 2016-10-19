@@ -8,6 +8,25 @@
 	position: fixed;
 }
 
+.add-button{
+	font-weight: bold;
+	font-size: 1.5rem;
+	border: groove;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.add-button a{
+	color: red;
+}
+
+.add-button a:hover{
+	text-decoration: none;
+	color: crimson;
+}
+
 .account-form{
 	margin-left: 1rem;
 }
