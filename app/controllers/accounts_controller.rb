@@ -106,7 +106,7 @@ class AccountsController < ApplicationController
   		end
       @day_total = @day_total_price + @day_total_misc + @day_total_hr
       @night_total = @night_total_price + @night_total_misc + @night_total_hr
-      @total = @total_price + @total_misc + total_hr
+      @total = @total_price + @total_misc + @total_hr
   	end
   end
 
