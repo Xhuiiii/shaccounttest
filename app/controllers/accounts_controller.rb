@@ -43,7 +43,7 @@ class AccountsController < ApplicationController
         @day_total_hr += account.hr_use || 0
         @day_total_hr_cc += account.hr_cc || 0
       end
-      @day_total = @day_total_price + @day_total_misc
+      @day_total = @day_total_price + @day_total_misc + @day_total_hr
       render :day
     end
 
@@ -68,7 +68,7 @@ class AccountsController < ApplicationController
         @night_total_hr += account.hr_use || 0
         @night_total_hr_cc += account.hr_cc || 0
       end
-      @night_total = @night_total_price + @night_total_misc
+      @night_total = @night_total_price + @night_total_misc + @night_total_hr
       render :night
     end
 
@@ -104,9 +104,9 @@ class AccountsController < ApplicationController
         @total_hr += account.hr_use || 0
         @total_hr_cc += account.hr_cc || 0
   		end
-      @day_total = @day_total_price + @day_total_misc
-      @night_total = @night_total_price + @night_total_misc
-      @total = @total_price + @total_misc
+      @day_total = @day_total_price + @day_total_misc + @day_total_hr
+      @night_total = @night_total_price + @night_total_misc + @night_total_hr
+      @total = @total_price + @total_misc + total_hr
   	end
   end
 
