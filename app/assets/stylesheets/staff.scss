@@ -19,11 +19,13 @@
 .time-in,
 .time-in-col{
 	color: green;
+	width: 180px;
 }
 
 .time-out,
 .time-out-col{
 	color: red;
+	width: 180px;
 }
 
 .name-field{
@@ -51,7 +53,7 @@
 
 .time-out{
 	position: absolute;
-	left: 11rem;
+	left: 15rem;
 	top: 0;
 }
 

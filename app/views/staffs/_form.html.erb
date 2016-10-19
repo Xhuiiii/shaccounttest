@@ -20,10 +20,10 @@
 			<%= @staff.room_number %>
 			<div class="time-in">
 				<%= f.label :time_in %><br>
-				<%= f.time_field :time_in, :min => (@staff.time_in.blank? ? Time.now.strftime('%H:%M') : @staff.time_in.strftime('%H:%M')), :value => (!@staff.time_in ? Time.now.strftime('%H:%M') : @staff.time_in.strftime('%H:%M')) %>
+				<%= f.time_select :time_in, :value => (!@staff.time_in ? Time.now.strftime('%H:%M') : @staff.time_in.strftime('%H:%M')), :min => (!@staff.time_in ? Time.now.strftime('%H:%M') : @staff.time_in.strftime('%H:%M')), ampm: true %>		
 				<div class="time-out">
 					<%= f.label :time_out %><br>
-					<%= f.time_field :time_out, :value => (!@staff.time_out ? Time.now.strftime('%H:%M') : @staff.time_out.strftime('%H:%M')) %>
+					<%= f.time_select :time_out, :value => (!@staff.time_out ? Time.now.strftime('%H:%M') : @staff.time_out.strftime('%H:%M')), :min => (!@staff.time_out ? Time.now.strftime('%H:%M') : @staff.time_out.strftime('%H:%M')), ampm: true %>
 				</div>
 			</div>
 		</div>
