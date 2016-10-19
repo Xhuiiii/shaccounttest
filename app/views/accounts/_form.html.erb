@@ -10,15 +10,23 @@
           <div class="cc-field">
           <%= f.label :C %><b>C</b><br>
           <%= f.number_field :cc, :id => "input-no" %>
-            <div class="ext-field">
-            <%= f.label :ext %><br>
-            <%= f.number_field :extension, :id => "input-no" %>
-              <div class="dep-field">
-              <%= f.label :dep %><br>
-              <%= f.number_field :deposit, :id => "input-no" %>
-                <div class="misc-field">
-                <%= f.label :misc %>.<br>
-                <%= f.number_field :miscellaneous, :id => "input-no" %>
+            <div class="hr-field">
+            <%= f.label :Hr_Use %><br>
+            <%= f.number_field :hr_use, :id => "input-no" %>
+              <div class="hr-cc-field">
+              <%= f.label :Hr %><b>CC</b><br>
+              <%= f.number_field :hr_cc, :id => "input-no" %>
+                <div class="ext-field">
+                <%= f.label :ext %><br>
+                <%= f.number_field :extension, :id => "input-no" %>
+                  <div class="dep-field">
+                  <%= f.label :dep %><br>
+                  <%= f.number_field :deposit, :id => "input-no" %>
+                    <div class="misc-field">
+                    <%= f.label :misc %>.<br>
+                    <%= f.number_field :miscellaneous, :id => "input-no" %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

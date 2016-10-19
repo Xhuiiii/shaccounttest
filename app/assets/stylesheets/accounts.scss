@@ -51,7 +51,8 @@
 	color: black;
 }
 
-.ext-field{
+.ext-field,
+.hr-field{
 	color: purple;
 }
 
@@ -59,7 +60,8 @@
 	color: red;
 }
 
-.misc-field{
+.misc-field,
+.hr-cc-field{
 	color:black;
 }
 
@@ -67,7 +69,7 @@
 	width: 50px;
 }
 
-@media (min-width: 568px){
+@media (min-width: 623px){
 #error_explanation{
 	position: fixed;
 	top: 30rem;
@@ -88,6 +90,18 @@
 }
 
 .cc-field{
+	position: absolute;
+	top: 0;
+	left: 7rem;
+}
+
+.hr-field{
+	position: absolute;
+	top: 0;
+	left: 7rem;
+}
+
+.hr-cc-field{
 	position: absolute;
 	top: 0;
 	left: 7rem;
@@ -118,7 +132,7 @@
 }
 }
 
-@media (max-width: 568px){
+@media (max-width: 623px){
 #error_explanation{
 	position: fixed;
 	top: 60rem;
@@ -140,6 +154,14 @@
 	position: absolute;
 }
 
+.hr-field{
+	position: absolute;
+}
+
+.hr-cc-field{
+	position: absolute;
+}
+
 .ext-field{
 	position: absolute;
 }
@@ -154,8 +176,14 @@
 
 .account-remark{
 	position: fixed;
-	top: 48rem;
+	top: 58rem;
 	left: 8rem;
+}
+
+.submit-button{
+	position: absolute;
+	bottom: 1rem;
+	left: 20rem;
 }
 }
 

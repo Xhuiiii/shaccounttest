@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
     @day_total_misc = 0
     @day_total_gst = 0
     @day_total_cc = 0
+    @day_total_hr = 0
     @day_total = 0
 
     @night_total_price = 0
@@ -16,6 +17,7 @@ class AccountsController < ApplicationController
     @night_total_misc = 0
     @night_total_gst = 0
     @night_total_cc = 0
+    @night_total_hr = 0
     @night_total = 0
 
     @total_price = 0
@@ -23,6 +25,7 @@ class AccountsController < ApplicationController
     @total_misc = 0
     @total_gst = 0
     @total_cc = 0
+    @total_hr = 0
     @total = 0
 
     if params[:today_day]
@@ -34,6 +37,7 @@ class AccountsController < ApplicationController
         @day_total_deposit += account.deposit
         @day_total_misc += account.miscellaneous || 0
         @day_total_cc += account.cc || 0
+        @day_total_hr += account.hr_use || 0
       end
       @day_total = @day_total_price + @day_total_misc
       render :day
@@ -57,6 +61,7 @@ class AccountsController < ApplicationController
         @night_total_deposit += account.deposit
         @night_total_misc += account.miscellaneous || 0
         @night_total_cc += account.cc || 0
+        @night_total_hr += account.hr_use || 0
       end
       @night_total = @night_total_price + @night_total_misc
       render :night
@@ -75,18 +80,21 @@ class AccountsController < ApplicationController
           @day_total_deposit += account.deposit
           @day_total_misc += account.miscellaneous || 0
           @day_total_cc += account.cc || 0
+          @day_total_hr += account.hr_use || 0
         elsif account.night
           @night_total_price += account.price
           @night_total_gst += ((account.price/1.06)* 0.06)
           @night_total_deposit += account.deposit
           @night_total_misc += account.miscellaneous || 0
           @night_total_cc += account.cc || 0
+          @night_total_hr += account.hr_use || 0
         end
   			@total_price += account.price
         @total_gst += ((account.price/1.06)* 0.06)
   			@total_deposit += account.deposit
         @total_misc += account.miscellaneous || 0
         @total_cc += account.cc || 0
+        @total_hr += account.hr_use || 0
   		end
       @day_total = @day_total_price + @day_total_misc
       @night_total = @night_total_price + @night_total_misc
@@ -162,6 +170,6 @@ class AccountsController < ApplicationController
 
   private 
   def account_params
-  	params.require(:account).permit(:old_room, :cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
+  	params.require(:account).permit(:hr_use, :hr_cc, :old_room, :cc, :day, :night, :account_date, :search_from, :search_to, :invoice_no, :room_no, :price, :extension, :deposit, :miscellaneous, :remark, :date)
   end
 end

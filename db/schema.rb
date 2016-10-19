@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018180022) do
+ActiveRecord::Schema.define(version: 20161019080919) do
 
   create_table "account_searchers", force: :cascade do |t|
     t.integer  "account_id"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20161018180022) do
     t.date     "account_date"
     t.integer  "cc"
     t.integer  "old_room"
+    t.integer  "hr_use"
+    t.integer  "hr_cc"
   end
 
   create_table "searchers", force: :cascade do |t|
