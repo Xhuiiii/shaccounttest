@@ -3,9 +3,9 @@
   <thead>
     <tr>
       <th class="date-col">Date</th>
+      <th class="time-created-col">Time</th>
       <th class="invoice-no-col">Invoice</th>
       <th class="room-no-col">Room</th>
-      <th class="time-created-col">Time</th>
       <th class="price-col">Night</th>
       <th class="cc-col">CC</th>
       <th class="gst-col">GST</th>
@@ -23,9 +23,9 @@
     <% @night_accounts.each do |account| %>
         <tr>
           <td class="date-col"><%= account.account_date.strftime('%d %b %Y') %></td>
+          <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
           <td class="invoice-no-col"><%= account.invoice_no %></td>
           <td class="room-no-col"><%= account.room_no %></td> 
-          <td class="time-created-col"><%= account.created_at.to_time.strftime("%R") %></td>
           <td class="price-col"><%= account.price %></td>
           <td class="cc-col"><%= account.cc %></td>
           <% if account.price %>
@@ -44,9 +44,9 @@
     <% end %>
     <tr>
       <td class="total total-title">Totals</td>
+      <td class="total time-created-col"></td>
       <td class="total invoice-no-col"></td>
       <td class="total room-no-col"><%= @night_accounts.length %></td>
-      <td class="total time-created-col"></td>
       <td class="total total-night-price"><%= @night_total_price || 0 %></td>
       <td class="total cc-col"><%= @night_total_cc %></td>
       <% if @night_total_gst %>
