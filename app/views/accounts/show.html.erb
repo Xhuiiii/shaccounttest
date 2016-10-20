@@ -4,9 +4,12 @@
   <thead>
     <tr>
       <th class="date-col">Date</th>
-      <th class="invoice-no-col">Invoice</th>
       <th class="room-no-col">Room</th>
+      <th class="days-col">Days</th>
       <th class="price-col">Price</th>
+      <th class="cc-col">CC</th>
+      <th class="hr-col">Hr Use</th>
+      <th class="hr-cc-col">Hr CC</th>
       <th class="extension-col">Ext.</th>
       <th class="deposit-col">Deposit</th>
       <th class="misc-col">Misc</th>
@@ -18,9 +21,12 @@
   <tbody>
   	<tr>
 	<td><%= @account.account_date.strftime('%d %b %Y') %></td>
-	<td><%= @account.invoice_no %></td>
 	<td><%= @account.room_no %></td>
+  <td><%= @account.days %></td>
 	<td class="price-col"><%= @account.price %></td>
+  <td class="cc-col"><%= @account.cc %></td>
+  <td class="hr-col"><%= @account.hr_use %></td>
+  <td class="hr-cc-col"><%= @account.hr_cc %></td>
 	<td class="extension-col"><%= @account.extension %></td>
 	<td class="deposit-col"><%= @account.deposit %></td>
 	<td><%= @account.miscellaneous %></td>

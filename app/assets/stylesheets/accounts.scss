@@ -21,14 +21,16 @@ th{
 }
 
 .day-price-col{
-	color: darkorange;
+	color: chocolate;
+	font-weight: bold;
 }
 .price-col{
 	color: blue;
 }
 
 .extension-col,
-.hr-col{
+.hr-col,
+.hr-cc-col{
 	color: darkorchid;
 	font-weight: bold;
 	font-size: 1.7rem;
@@ -81,7 +83,6 @@ th{
 }
 
 .misc-field,
-.hr-cc-field, 
 .days-field{
 	color:black;
 }
