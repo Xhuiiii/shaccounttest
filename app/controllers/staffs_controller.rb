@@ -6,6 +6,13 @@ class StaffsController < ApplicationController
   def create
     @staff = Staff.new(staff_params)
     @staff.housekeeping_date = Date.today
+    #Can only create for empty room
+    @todays_housekeeping = Staff.where(:housekeeping_date => Date.today)
+    @todays_housekeeping.each do |rm|
+      if @staff.room_number == rm
+        render :new, notice: "Housekeeping for this room has already been created."
+      end
+    end
     if @staff.save
       redirect_to staffs_path(date: Date.today), notice: "Housekeeping was successfully created."
     else
@@ -30,7 +37,11 @@ class StaffsController < ApplicationController
 
   def update
     @staff = Staff.find(params[:id])
+    @account = Account.where(:room_no => @staff.room_number)
     if @staff.update(staff_params)
+      if @account
+        @account.update(:remark => staff_params[:remark])
+      end
       redirect_to staffs_path(date: Date.today), notice: "Housekeeping was successfully updated."
     else
       render :edit

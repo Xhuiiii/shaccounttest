@@ -152,11 +152,17 @@ class AccountsController < ApplicationController
 
     #Create housekeeping for each day
     @housekeepings = []
-    @account.days.times do |d|
-      @housekeeping = Staff.new
-      @housekeeping.room_number = @account.room_no
-      @housekeeping.housekeeping_date = (Date.today + d.day)
-      @housekeepings << @housekeeping
+    if @account.days
+      @account.days.times do |d|
+        @housekeeping = Staff.new
+        @housekeeping.room_number = @account.room_no
+        @housekeeping.housekeeping_date = (Date.today + d.day)
+        @housekeepings << @housekeeping
+      end
+
+      if @account.remark
+        @housekeepings[0].remark = @account.remark
+      end
     end
 
     if @account.save
@@ -176,9 +182,15 @@ class AccountsController < ApplicationController
   def update 
     @account = Account.find(params[:id])
     @account.old_room = @account.room_no
-    @housekeeping = Staff.find_by(:room_number => @account.room_no)
+    @housekeepings = []
+    @account.days.times do |d|
+      @housekeeping = Staff.find_by(:room_number => @account.room_no, :housekeeping_date => (@account.account_date + d.day))
+      @housekeepings << @housekeeping
+    end 
   	if @account.update(account_params)
-      @housekeeping.update(:room_number => account_params[:room_no])
+      @housekeepings.each do |hk|
+        hk.update(:room_number => account_params[:room_no], :remark => account_params[:remark])
+      end
   		redirect_to @account, notice: "Account was successfully updated."
   	else
   		render :edit
