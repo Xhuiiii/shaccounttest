@@ -127,7 +127,8 @@ class AccountsController < ApplicationController
     night_start = Time.parse "08:00 pm"
     midnight = Time.now.beginning_of_day
     end_of_the_day = Time.now.end_of_day
-    beginning_of_month = Time.now.beginning_of_month
+    beginning_of_month = Time.now.beginning_of_month + 8.hours
+    beginning_of_last_month = beginning_of_month - 1.month
     now = Time.now
 
     #if night shift
@@ -143,7 +144,15 @@ class AccountsController < ApplicationController
     end
 
     current_accounts = []
-    current_accounts = Account.where(:account_date => beginning_of_month..now)
+    #If same month
+    if (now.month == beginning_of_month.month)
+      #If new invoice month (reset invoice no to 1 for new)
+      if (now > beginning_of_month)
+        current_accounts = Account.where(:account_date => beginning_of_month..now)
+      else #Use old invoice number++ (still on previous month)
+        current_accounts = Account.where(:account_date => beginning_of_last_month..beginning_of_month)
+      end
+    end
     if current_accounts.length > 0
       @account.invoice_no = Account.last.invoice_no + 1
     else
